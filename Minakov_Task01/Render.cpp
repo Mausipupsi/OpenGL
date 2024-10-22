@@ -18,146 +18,147 @@ void OutText(LPCSTR str, double x, double y, double z = 0) {
 }
 
 void SetupAndDrawLines(const vector<double>& vertices, float lineWidth, const double* color) {
-    glColor3dv(color); // Встановлення кольору ліній
-    glLineWidth(lineWidth); // Встановлення ширини ліній
+    glColor3dv(color); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РєРѕР»СЊРѕСЂСѓ Р»С–РЅС–Р№
+    glLineWidth(lineWidth); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ С€РёСЂРёРЅРё Р»С–РЅС–Р№
 
-    glEnableClientState(GL_VERTEX_ARRAY); // Включення масиву вершин
-    glVertexPointer(2, GL_DOUBLE, 0, vertices.data()); // Встановлення вказівника на масив вершин
-    glDrawArrays(GL_LINES, 0, static_cast<GLsizei>(vertices.size() / 2)); // Малювання ліній
-    glDisableClientState(GL_VERTEX_ARRAY); // Вимкнення масиву вершин
+    glEnableClientState(GL_VERTEX_ARRAY); // Р’РєР»СЋС‡РµРЅРЅСЏ РјР°СЃРёРІСѓ РІРµСЂС€РёРЅ
+    glVertexPointer(2, GL_DOUBLE, 0, vertices.data()); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РІРєР°Р·С–РІРЅРёРєР° РЅР° РјР°СЃРёРІ РІРµСЂС€РёРЅ
+    glDrawArrays(GL_LINES, 0, static_cast<GLsizei>(vertices.size() / 2)); // РњР°Р»СЋРІР°РЅРЅСЏ Р»С–РЅС–Р№
+    glDisableClientState(GL_VERTEX_ARRAY); // Р’РёРјРєРЅРµРЅРЅСЏ РјР°СЃРёРІСѓ РІРµСЂС€РёРЅ
 }
 
 void DrawGrid(double xMin, double xMax, double yMin, double yMax, double step) {
-    glEnable(GL_LINE_STIPPLE); // Включення режиму пунктирних ліній
-    glLineStipple(1, 0x00FF); // Встановлення шаблону пунктирних ліній
+    glEnable(GL_LINE_STIPPLE); // Р’РєР»СЋС‡РµРЅРЅСЏ СЂРµР¶РёРјСѓ РїСѓРЅРєС‚РёСЂРЅРёС… Р»С–РЅС–Р№
+    glLineStipple(1, 0x00FF); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ С€Р°Р±Р»РѕРЅСѓ РїСѓРЅРєС‚РёСЂРЅРёС… Р»С–РЅС–Р№
 
-    vector<double> vertices; // Створення вектора для зберігання вершин сітки
+    vector<double> vertices; // РЎС‚РІРѕСЂРµРЅРЅСЏ РІРµРєС‚РѕСЂР° РґР»СЏ Р·Р±РµСЂС–РіР°РЅРЅСЏ РІРµСЂС€РёРЅ СЃС–С‚РєРё
     for (double x = xMin; x <= xMax; x += step) {
-        vertices.push_back(x); // Додавання координат вершин сітки по осі X
-        vertices.push_back(yMin - 1); // Додавання координат вершин сітки по осі Y
-        vertices.push_back(x); // Додавання координат вершин сітки по осі X
-        vertices.push_back(yMax + 1); // Додавання координат вершин сітки по осі Y
+        vertices.push_back(x); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– X
+        vertices.push_back(yMin - 1); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– Y
+        vertices.push_back(x); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– X
+        vertices.push_back(yMax + 1); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– Y
     }
     for (double y = yMin; y <= yMax; y += step) {
-        vertices.push_back(xMin - 0.9); // Додавання координат вершин сітки по осі X
-        vertices.push_back(y); // Додавання координат вершин сітки по осі Y
-        vertices.push_back(xMax + 0.9); // Додавання координат вершин сітки по осі X
-        vertices.push_back(y); // Додавання координат вершин сітки по осі Y
+        vertices.push_back(xMin - 0.9); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– X
+        vertices.push_back(y); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– Y
+        vertices.push_back(xMax + 0.9); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– X
+        vertices.push_back(y); // Р”РѕРґР°РІР°РЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ СЃС–С‚РєРё РїРѕ РѕСЃС– Y
     }
 
-    double gridColor[] = { 0.7, 0.7, 0.7 }; // Колір сітки
-    SetupAndDrawLines(vertices, 1, gridColor); // Налаштування та малювання ліній сітки
+    double gridColor[] = { 0.7, 0.7, 0.7 }; // РљРѕР»С–СЂ СЃС–С‚РєРё
+    SetupAndDrawLines(vertices, 1, gridColor); // РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ С‚Р° РјР°Р»СЋРІР°РЅРЅСЏ Р»С–РЅС–Р№ СЃС–С‚РєРё
 
-    glDisable(GL_LINE_STIPPLE); // Вимкнення режиму пунктирних ліній
+    glDisable(GL_LINE_STIPPLE); // Р’РёРјРєРЅРµРЅРЅСЏ СЂРµР¶РёРјСѓ РїСѓРЅРєС‚РёСЂРЅРёС… Р»С–РЅС–Р№
 }
 
 void DrawAxes(double xMin, double xMax, double yMin, double yMax) {
     vector<double> vertices = {
-        xMin - 0.9, 0, xMax + 0.9, 0, // Координати вершин осі X
-        0, yMin - 1, 0, yMax + 1 // Координати вершин осі Y
+        xMin - 0.9, 0, xMax + 0.9, 0, // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ РѕСЃС– X
+        0, yMin - 1, 0, yMax + 1 // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ РѕСЃС– Y
     };
 
-    double axesColor[] = { 1, 1, 0 }; // Колір осей
-    SetupAndDrawLines(vertices, 4, axesColor); // Налаштування та малювання осей
+    double axesColor[] = { 1, 1, 0 }; // РљРѕР»С–СЂ РѕСЃРµР№
+    SetupAndDrawLines(vertices, 4, axesColor); // РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ С‚Р° РјР°Р»СЋРІР°РЅРЅСЏ РѕСЃРµР№
 
     vector<double> customLines = {
-        xMin - 0.9, yMin - 0.3, xMin - 0.9, yMax + 1, // Координати додаткових ліній
-        xMin - 0.3, yMin - 1, xMax + 0.9, yMin - 1 // Координати додаткових ліній
+        xMin - 0.9, yMin - 0.3, xMin - 0.9, yMax + 1, // РљРѕРѕСЂРґРёРЅР°С‚Рё РґРѕРґР°С‚РєРѕРІРёС… Р»С–РЅС–Р№
+        xMin - 0.3, yMin - 1, xMax + 0.9, yMin - 1 // РљРѕРѕСЂРґРёРЅР°С‚Рё РґРѕРґР°С‚РєРѕРІРёС… Р»С–РЅС–Р№
     };
 
-    double customLinesColor[] = { 1, 1, 1 }; // Колір додаткових ліній
-    SetupAndDrawLines(customLines, 5, customLinesColor); // Налаштування та малювання додаткових ліній
+    double customLinesColor[] = { 1, 1, 1 }; // РљРѕР»С–СЂ РґРѕРґР°С‚РєРѕРІРёС… Р»С–РЅС–Р№
+    SetupAndDrawLines(customLines, 5, customLinesColor); // РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ С‚Р° РјР°Р»СЋРІР°РЅРЅСЏ РґРѕРґР°С‚РєРѕРІРёС… Р»С–РЅС–Р№
 
-    glLineWidth(3); // Встановлення ширини ліній
-    glBegin(GL_LINES); // Початок малювання ліній
-    glVertex2d(xMin - 0.9, yMax + 1.05); // Координати вершин стрілок осі Y
-    glVertex2d(xMin - 1.1, yMax + 0.6); // Координати вершин стрілок осі Y
-    glVertex2d(xMin - 0.9, yMax + 1.05); // Координати вершин стрілок осі Y
-    glVertex2d(xMin - 0.7, yMax + 0.6); // Координати вершин стрілок осі Y
+    glLineWidth(3); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ С€РёСЂРёРЅРё Р»С–РЅС–Р№
+    glBegin(GL_LINES); // РџРѕС‡Р°С‚РѕРє РјР°Р»СЋРІР°РЅРЅСЏ Р»С–РЅС–Р№
+    glVertex2d(xMin - 0.9, yMax + 1.05); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– Y
+    glVertex2d(xMin - 1.1, yMax + 0.6); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– Y
+    glVertex2d(xMin - 0.9, yMax + 1.05); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– Y
+    glVertex2d(xMin - 0.7, yMax + 0.6); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– Y
 
-    glVertex2d(xMax + 0.95, yMin - 1); // Координати вершин стрілок осі X
-    glVertex2d(xMax + 0.6, yMin - 1.2); // Координати вершин стрілок осі X
-    glVertex2d(xMax + 0.95, yMin - 1); // Координати вершин стрілок осі X
-    glVertex2d(xMax + 0.6, yMin - 0.8); // Координати вершин стрілок осі X
-    glEnd(); // Кінець малювання ліній
+    glVertex2d(xMax + 0.95, yMin - 1); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– X
+    glVertex2d(xMax + 0.6, yMin - 1.2); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– X
+    glVertex2d(xMax + 0.95, yMin - 1); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– X
+    glVertex2d(xMax + 0.6, yMin - 0.8); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ СЃС‚СЂС–Р»РѕРє РѕСЃС– X
+    glEnd(); // РљС–РЅРµС†СЊ РјР°Р»СЋРІР°РЅРЅСЏ Р»С–РЅС–Р№
 
-    glLineWidth(3); // Встановлення ширини ліній
-    glBegin(GL_LINES); // Початок малювання ліній
+    glLineWidth(3); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ С€РёСЂРёРЅРё Р»С–РЅС–Р№
+    glBegin(GL_LINES); // РџРѕС‡Р°С‚РѕРє РјР°Р»СЋРІР°РЅРЅСЏ Р»С–РЅС–Р№
     for (double y = yMin; y <= yMax; y++) {
-        glVertex2d(xMin - 0.9, y); // Координати вершин поділок осі Y
-        glVertex2d(xMin - 1.12, y); // Координати вершин поділок осі Y
+        glVertex2d(xMin - 0.9, y); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ РїРѕРґС–Р»РѕРє РѕСЃС– Y
+        glVertex2d(xMin - 1.12, y); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ РїРѕРґС–Р»РѕРє РѕСЃС– Y
     }
     for (double x = xMin; x <= xMax; x++) {
-        glVertex2d(x, yMin - 1.22); // Координати вершин поділок осі X
-        glVertex2d(x, yMin - 1); // Координати вершин поділок осі X
+        glVertex2d(x, yMin - 1.22); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ РїРѕРґС–Р»РѕРє РѕСЃС– X
+        glVertex2d(x, yMin - 1); // РљРѕРѕСЂРґРёРЅР°С‚Рё РІРµСЂС€РёРЅ РїРѕРґС–Р»РѕРє РѕСЃС– X
     }
-    glEnd(); // Кінець малювання ліній
+    glEnd(); // РљС–РЅРµС†СЊ РјР°Р»СЋРІР°РЅРЅСЏ Р»С–РЅС–Р№
 
-    OutText("Y1", xMin - 1.5, yMin - 0.1); // Відображення тексту "Y1" на осі Y
-    OutText("Y2", xMin - 1.5, yMax - 0.1); // Відображення тексту "Y2" на осі Y
-    OutText("X1", xMin - 0.1, yMin - 1.5); // Відображення тексту "X1" на осі X
-    OutText("X2", xMax - 0.1, yMin - 1.5); // Відображення тексту "X2" на осі X
+    OutText("Y1", xMin - 1.5, yMin - 0.1); // Р’С–РґРѕР±СЂР°Р¶РµРЅРЅСЏ С‚РµРєСЃС‚Сѓ "Y1" РЅР° РѕСЃС– Y
+    OutText("Y2", xMin - 1.5, yMax - 0.1); // Р’С–РґРѕР±СЂР°Р¶РµРЅРЅСЏ С‚РµРєСЃС‚Сѓ "Y2" РЅР° РѕСЃС– Y
+    OutText("X1", xMin - 0.1, yMin - 1.5); // Р’С–РґРѕР±СЂР°Р¶РµРЅРЅСЏ С‚РµРєСЃС‚Сѓ "X1" РЅР° РѕСЃС– X
+    OutText("X2", xMax - 0.1, yMin - 1.5); // Р’С–РґРѕР±СЂР°Р¶РµРЅРЅСЏ С‚РµРєСЃС‚Сѓ "X2" РЅР° РѕСЃС– X
 }
 
 class Point {
 public:
-    double x, y; // Координати точки
+    double x, y;
 
-    Point(double x = 0, double y = 0) : x(x), y(y) {} // Конструктор з параметрами за замовчуванням
+    Point(double x = 0, double y = 0) : x(x), y(y) {}
 
-    void draw() const {
-        glColor3d(1, 0, 0); // Встановлення червоного кольору для точки
-        glPointSize(15); // Встановлення розміру точки
-        glBegin(GL_POINTS); // Початок малювання точки
-        glVertex2d(x, y); // Встановлення координат точки
-        glEnd(); // Кінець малювання точки
+    // РњРµС‚РѕРґ РјР°Р»СЋРІР°РЅРЅСЏ Р· РїР°СЂР°РјРµС‚СЂРѕРј С‚РёРїСѓ РїСЂРёРјС–С‚РёРІСѓ
+    void draw(GLenum prim = GL_POINTS) const {
+        glColor3d(1, 0, 0); // Р§РµСЂРІРѕРЅРёР№ РєРѕР»С–СЂ РґР»СЏ С‚РѕС‡РѕРє
+        glPointSize(15); // Р РѕР·РјС–СЂ С‚РѕС‡РєРё
+        glBegin(prim); // РџРѕС‡Р°С‚РѕРє РјР°Р»СЋРІР°РЅРЅСЏ
+        glVertex2d(x, y); // РљРѕРѕСЂРґРёРЅР°С‚Рё С‚РѕС‡РєРё
+        glEnd(); // РљС–РЅРµС†СЊ РјР°Р»СЋРІР°РЅРЅСЏ
     }
 };
 
 class MyPolygon {
 public:
-    vector<Point> points; // Вектор точок, що складають полігон
+    vector<Point> points;
 
-    MyPolygon(const vector<Point>& points) : points(points) {} // Конструктор з ініціалізацією вектора точок
+    MyPolygon(const vector<Point>& points) : points(points) {}
 
-    void draw() const {
-        glColor3d(0, 0, 1); // Встановлення синього кольору для полігону
-        glLineWidth(7); // Встановлення ширини ліній полігону
-        glBegin(GL_LINE_STRIP); // Початок малювання полігону
+    // РњРµС‚РѕРґ РјР°Р»СЋРІР°РЅРЅСЏ Р· РїР°СЂР°РјРµС‚СЂРѕРј С‚РёРїСѓ РїСЂРёРјС–С‚РёРІСѓ
+    void draw(GLenum prim = GL_LINE_STRIP) const {
+        glColor3d(0, 0, 1); // РЎРёРЅС–Р№ РєРѕР»С–СЂ РґР»СЏ РїРѕР»С–РіРѕРЅСѓ
+        glLineWidth(7); // РЁРёСЂРёРЅР° Р»С–РЅС–Р№
+        glBegin(prim); // РџРѕС‡Р°С‚РѕРє РјР°Р»СЋРІР°РЅРЅСЏ РїРѕР»С–РіРѕРЅСѓ
         for (const auto& point : points) {
-            glVertex2d(point.x, point.y); // Встановлення координат точок полігону
+            glVertex2d(point.x, point.y); // РљРѕРѕСЂРґРёРЅР°С‚Рё С‚РѕС‡РѕРє
         }
-        glEnd(); // Кінець малювання полігону
+        glEnd(); // РљС–РЅРµС†СЊ РјР°Р»СЋРІР°РЅРЅСЏ РїРѕР»С–РіРѕРЅСѓ
     }
 };
 
+// РљРѕРЅСЃС‚Р°РЅС‚РЅРёР№ РјР°СЃРёРІ С‚РѕС‡РѕРє РїРѕР»С–РіРѕРЅСѓ
+const vector<Point> polygonPoints = {
+    Point(-1, -4), Point(-2, -2), Point(-2, -1), Point(-1, 0), Point(1, -2), Point(1, -3), Point(0, -4), Point(-1, -4)
+};
+
 void Render(RECT& clientRect) {
-    glClearColor(0.2f, 0.2f, 0.2f, 1.0f); // Встановлення кольору фону
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // Очищення буферів кольору, глибини та трафарету
-    glLoadIdentity(); // Скидання поточної матриці
+    glClearColor(0.2f, 0.2f, 0.2f, 1.0f); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РєРѕР»СЊРѕСЂСѓ С„РѕРЅСѓ
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // РћС‡РёС‰РµРЅРЅСЏ Р±СѓС„РµСЂС–РІ
+    glLoadIdentity(); // РЎРєРёРґР°РЅРЅСЏ РїРѕС‚РѕС‡РЅРѕС— РјР°С‚СЂРёС†С–
 
-    int Height = clientRect.bottom - clientRect.top; // Визначення висоти вікна
-    int Width = clientRect.right - clientRect.left; // Визначення ширини вікна
+    int Height = clientRect.bottom - clientRect.top; // Р’РёСЃРѕС‚Р° РІС–РєРЅР°
+    int Width = clientRect.right - clientRect.left; // РЁРёСЂРёРЅР° РІС–РєРЅР°
 
-    double xMin = -2, xMax = 7, yMin = -4, yMax = 0; // Встановлення меж координатної системи
-    glViewport(0, 0, Width, Height); // Встановлення області перегляду
-    gluOrtho2D(xMin - 2.0, xMax + 2.0, yMin - 2.0, yMax + 2.0); // Встановлення ортогональної проекції
+    double xMin = -2, xMax = 7, yMin = -4, yMax = 0; // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РјРµР¶ РєРѕРѕСЂРґРёРЅР°С‚РЅРѕС— СЃРёСЃС‚РµРјРё
+    glViewport(0, 0, Width, Height); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РѕР±Р»Р°СЃС‚С– РїРµСЂРµРіР»СЏРґСѓ
+    gluOrtho2D(xMin - 2.0, xMax + 2.0, yMin - 2.0, yMax + 2.0); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РѕСЂС‚РѕРіРѕРЅР°Р»СЊРЅРѕС— РїСЂРѕРµРєС†С–С—
 
-    DrawGrid(xMin, xMax, yMin, yMax, 1.0); // Малювання сітки
-    DrawAxes(xMin, xMax, yMin, yMax); // Малювання осей
+    DrawGrid(xMin, xMax, yMin, yMax, 1.0); // РњР°Р»СЋРІР°РЅРЅСЏ СЃС–С‚РєРё
+    DrawAxes(xMin, xMax, yMin, yMax); // РњР°Р»СЋРІР°РЅРЅСЏ РѕСЃРµР№
 
-    vector<Point> polygonPoints = {
-        Point(-1, -4), Point(-2, -2), Point(-2, -1), Point(-1, 0), Point(1, -2), Point(1, -3), Point(0, -4), Point(-1, -4)
-    }; // Визначення точок полігону
+    MyPolygon polygon(polygonPoints); // РЎС‚РІРѕСЂРµРЅРЅСЏ РїРѕР»С–РіРѕРЅСѓ
+    polygon.draw(GL_LINE_STRIP); // РњР°Р»СЋРІР°РЅРЅСЏ РїРѕР»С–РіРѕРЅСѓ
 
-    vector<Point> points = {
-        Point(4, -4), Point(3, -2), Point(3, -1), Point(4, 0), Point(6, -2), Point(6, -3), Point(5, -4), Point(4, -4)
-    }; // Визначення окремих точок
-
-    MyPolygon polygon(polygonPoints); // Створення об'єкта полігону
-    polygon.draw(); // Малювання полігону
-
-    for (const auto& point : points) {
-        point.draw(); // Малювання окремих точок
+    // РњР°Р»СЋРІР°РЅРЅСЏ С‚РѕС‡РѕРє Р·С– Р·СЃСѓРІРѕРј РїРѕ РѕСЃС– X РЅР° 5
+    for (const auto& point : polygonPoints) {
+        Point shiftedPoint(point.x + 5, point.y);
+        shiftedPoint.draw(GL_POINTS); // РњР°Р»СЋРІР°РЅРЅСЏ С‚РѕС‡РєРё
     }
 }
