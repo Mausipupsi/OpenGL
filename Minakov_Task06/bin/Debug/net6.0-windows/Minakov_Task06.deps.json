@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Minakov_Task06/1.0.0": {
+        "runtime": {
+          "Minakov_Task06.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Minakov_Task06/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
